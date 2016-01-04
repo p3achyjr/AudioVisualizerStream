@@ -8,7 +8,9 @@ function initBars() {
   var x = -95;
   var offset = 195 / (analyser.frequencyBinCount/5);
   for(var i = 0; i < analyser.frequencyBinCount/5; i++) {
-    bar = new THREE.Mesh(geometry, material);
+    bar = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial( { color: 0x000000, 
+                                                specular: 0x000000, 
+                                                shininess: 50}));
     bar.position.set(x, 0, 0);
     scene.add(bar);
     bars.push(bar);
@@ -17,7 +19,7 @@ function initBars() {
 }
 
 function initRoom() {
-  var planeGeo = new THREE.PlaneBufferGeometry(350, 1000);
+  var planeGeo = new THREE.PlaneBufferGeometry(500, 1000);
   groundMirror = new THREE.Mirror(renderer, camera, {clipBias: 0.003, 
                                                      textureWidth: WIDTH, 
                                                      textureHeight: HEIGHT, 
@@ -33,25 +35,25 @@ function initRoom() {
   // planeTop.rotateX( Math.PI / 2 );
   // scene.add( planeTop );
 
-  var planeBack = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0x333333 } ) );
-  planeBack.position.z = -250;
+  var planeBack = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff } ) );
+  planeBack.position.z = -150;
   planeBack.position.y = 50;
   scene.add( planeBack );
 
-  var planeFront = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0x333333 } ) );
-  planeFront.position.z = 100;
+  var planeFront = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff } ) );
+  planeFront.position.z = 150;
   planeFront.position.y = 50;
   planeFront.rotateY( Math.PI );
   scene.add( planeFront );
 
-  var planeRight = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0x333333 } ) );
-  planeRight.position.x = 100;
+  var planeRight = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff } ) );
+  planeRight.position.x = 150;
   planeRight.position.y = 50;
   planeRight.rotateY( - Math.PI / 2 );
   scene.add( planeRight );
 
-  var planeLeft = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0x333333 } ) );
-  planeLeft.position.x = -100;
+  var planeLeft = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff } ) );
+  planeLeft.position.x = -150;
   planeLeft.position.y = 50;
   planeLeft.rotateY( Math.PI / 2 );
   scene.add( planeLeft );
@@ -62,11 +64,11 @@ function initRoom() {
   frontLight.position.z = 50;
   scene.add( frontLight );
 
-  var cornerLight = new THREE.PointLight( 0x990000, 1, 250);
+  var cornerLight = new THREE.PointLight( 0x990000, 1, 300);
   cornerLight.position.set(-100, 60, 50);
   scene.add( cornerLight );
 
-  cornerLight = new THREE.PointLight( 0x990000, 1, 250);
+  cornerLight = new THREE.PointLight( 0x990000, 1, 300);
   cornerLight.position.set(100, 60, 50);
   scene.add( cornerLight );
 
@@ -96,7 +98,7 @@ function updateBars() {
 
   for(var i = 0; i < bars.length; i++) {
     fftVal = freqArr[i];
-    scale = (fftVal * 1.0 / 255) * 10000;
+    scale = (fftVal * 1.0 / 255) * 12000;
     // console.log(scale);
     hex = (fftVal << 16) + (fftVal << 8) + fftVal;
 
