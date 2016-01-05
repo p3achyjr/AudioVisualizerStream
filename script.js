@@ -13,6 +13,8 @@ function getStreamUrl() {
 function playStream(stream_url) {
   audioElement.setAttribute('src', stream_url);
   audioElement.play();
+  songPlaying = true;
+  $("#play").attr('src', icons[songPlaying ? 0 : 1]);
 }
 
 function updateWidget() {

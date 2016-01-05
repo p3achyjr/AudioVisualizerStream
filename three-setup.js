@@ -11,14 +11,10 @@ function threeInit() {
   camera.position.set( 0, 40, 250 );
 
   // controls
-  controls = new THREE.TrackballControls( camera, renderer.domElement );
-  // controls.rotateSpeed = 1.0;
-  // controls.zoomSpeed = 0.2;
-  // controls.panSpeed = 0.8;
-
-  controls.noZoom = false;
-  controls.noPan = false;
-
-  controls.staticMoving = true;
-  controls.dynamicDampingFactor = 0.3;
+  controls = new THREE.OrbitControls( camera, renderer.domElement );
+  controls.rotateSpeed = .1;
+  controls.zoomSpeed = .4;
+  controls.keyPanSpeed = .1;
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.3;
 }
