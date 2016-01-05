@@ -95,6 +95,7 @@ $(document).ready( function() {
   // resizeCanvas();
   audioElement = document.getElementById("player");
   audioElement.crossOrigin = "anonymous";
+  audioElement.volume = .5;
   $("#sc-url").hide();
   $("#sc-url").hover(displayUrlBox, hideUrlBox);
   $("#sc-song-info").hover(displayUrlBox, hideUrlBox);
