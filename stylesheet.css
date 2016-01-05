@@ -3,7 +3,40 @@ html, body {
   padding: 0;
 }
 
-.container {
-  height: 100%;
-  width: 100%;
+[contentEditable=true]:empty:not(:focus):before {
+  content:attr(data-ph)
 }
+
+#play {
+  width: 30px;
+  height: 30px;
+}
+
+#sc-widget {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-family: 'Helvetica';
+  font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  color: #cdd7dd;
+  padding: 50px;
+  padding-right: 100px;
+}
+
+#sc-song-info {
+  float: left;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+#sc-url {
+  position: absolute;
+  top: 53px;
+  right: 140px;
+  width: 500px;
+  border-bottom: #cdd7dd 1px solid;
+}
+

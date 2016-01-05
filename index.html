@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- <script src="jquery.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
+  <script src="http://connect.soundcloud.com/sdk.js"></script>
   <script src="TrackballControls.js"></script>
   <script src="Mirror.js"></script>
   <script src="Globals.js"></script>
@@ -15,6 +16,13 @@
 </head>
 <body>
   <audio id="player" src="sounds/dreaming.mp3"></audio>
+  <div id="sc-widget">
+    <div id="sc-song-info">
+      Kyle Landry: Dreaming
+    </div>
+    <div id="sc-url" contentEditable="true" data-ph="Soundcloud URL Here (Enter to Submit)"></div>
+    <img id="play" src="pause-icon.png">
+  </div>
 <!--   <canvas id="canvas" width="100%" height="100%"></canvas> -->
 </body>
 </html>
