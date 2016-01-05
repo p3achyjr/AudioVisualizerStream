@@ -1,5 +1,5 @@
 function onLoadFailure() {
-  $("sc-url").text(lastUrl);
+  $("#sc-url").text(lastUrl);
 }
 
 function getStreamUrl() {
@@ -15,9 +15,25 @@ function playStream(stream_url) {
   audioElement.play();
 }
 
+function updateWidget() {
+  var uploader = scData.user.username;
+  var title;
+  if (scData.kind === "playlist") {
+    title = scData.tracks[0].title;
+  } else {
+    title = scData.title;
+  }
+
+  var songTitle = uploader + ": " + title;
+  $("#sc-song-info").text(songTitle);
+  console.log(songTitle);
+}
+
 function onLoadSuccess() {
   var stream_url = getStreamUrl();
   playStream(stream_url);
+
+  updateWidget();
 }
 
 function loadFromSC(track_url) {
