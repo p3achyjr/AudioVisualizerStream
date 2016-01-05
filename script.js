@@ -99,6 +99,7 @@ function playBtnHandleClick() {
 }
 
 function handleSubmitUrl() {
+  console.log("submitted");
   var track_url = $("#sc-url").text();
   loadFromSC(track_url);
 }
