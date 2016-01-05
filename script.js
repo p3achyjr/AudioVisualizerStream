@@ -112,8 +112,12 @@ $(document).ready( function() {
   // resizeCanvas();
   audioElement = document.getElementById("player");
   audioElement.crossOrigin = "anonymous";
-  audioElement.volume = .5;
-  $("#sc-url").hide();
+  audioElement.volume = .75;
+  $("#sc-song-info").hide();
+  window.setTimeout( function() {
+    $("#sc-url").fadeOut("slow");
+    $("#sc-song-info").fadeIn("slow");
+  }, 2500);
   $("#sc-url").hover(displayUrlBox, hideUrlBox);
   $("#sc-song-info").hover(displayUrlBox, hideUrlBox);
   document.getElementById("sc-url").addEventListener("keypress", function(e) {
