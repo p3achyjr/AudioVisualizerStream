@@ -116,9 +116,11 @@ $(document).ready( function() {
   $("#sc-url").hide();
   $("#sc-url").hover(displayUrlBox, hideUrlBox);
   $("#sc-song-info").hover(displayUrlBox, hideUrlBox);
-  $("#sc-url").keypress(function(e){
-    if (e.which === 13) handleSubmitUrl();
-    return e.which != 13;
+  document.getElementById("sc-url").addEventListener("keypress", function(e) {
+    if(e.which === 13) {
+      handleSubmitUrl();
+      e.preventDefault();
+    }
   });
   $("#play").click(playBtnHandleClick);
   threeInit();
