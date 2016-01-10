@@ -2,7 +2,7 @@
 var scene, camera, renderer, controls;
 var clock;
 var groundMirror;
-var rotSpeed = .0003;
+var rotSpeed = .0006;
 
 var WIDTH = window.innerWidth,
     HEIGHT = window.innerHeight;
