@@ -163,9 +163,11 @@ $(document).ready( function() {
     audioElement.currentTime = $(this).val();
     $("#seek").attr("max", audioElement.duration);
     updateTime = true;
+    console.log(updateTime);
   });
-  $("#seek").on("input change", function() {
+  $("#seek").on("input", function() {
     updateTime = false;
+    console.log(updateTime);
   });
   $("#vol-control").change("change", function() {
     audioElement.volume = $(this).val() / 100;
