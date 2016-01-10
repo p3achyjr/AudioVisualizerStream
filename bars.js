@@ -40,19 +40,19 @@ function initRoom() {
   planeBack.position.y = 50;
   scene.add( planeBack );
 
-  var planeFront = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x363636 } ) );
+  var planeFront = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x252525 } ) );
   planeFront.position.z = 150;
   planeFront.position.y = 50;
   planeFront.rotateY( Math.PI );
   scene.add( planeFront );
 
-  var planeRight = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x131313 } ) );
+  var planeRight = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff } ) );
   planeRight.position.x = 150;
   planeRight.position.y = 50;
   planeRight.rotateY( - Math.PI / 2 );
   scene.add( planeRight );
 
-  var planeLeft = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x131313 } ) );
+  var planeLeft = new THREE.Mesh( planeGeo, new THREE.MeshPhongMaterial( { color: 0xffffff } ) );
   planeLeft.position.x = -150;
   planeLeft.position.y = 50;
   planeLeft.rotateY( Math.PI / 2 );

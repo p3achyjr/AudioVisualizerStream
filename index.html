@@ -16,12 +16,19 @@
 </head>
 <body>
   <audio id="player" src="sounds/dreaming.mp3"></audio>
+  <div id="seekers">
+    <input type="range" id="vol-control" value="100" max="100">
+    <img id="volume" src="img/volume_up.png">
+  </div>
   <div id="sc-widget">
     <div id="sc-song-info">
-      Kyle Landry: Dreaming
+      Kyle Landry: Dreaming<br>
     </div>
-    <div id="sc-url" contentEditable="true" data-ph="Soundcloud URL Here (Enter to Submit)"></div>
-    <img id="play" src="pause-icon.png">
+    <div id="sc-url" contentEditable="true" data-ph="Paste Soundcloud URL Here (Enter to Submit)"></div>
+    <img id="play" src="img/pause-icon.png">
+  </div>
+  <div id="range-seeker">
+    <input type="range" id="seek" value="0" max="">
   </div>
 <!--   <canvas id="canvas" width="100%" height="100%"></canvas> -->
 </body>

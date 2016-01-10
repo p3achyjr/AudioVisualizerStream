@@ -14,7 +14,7 @@ function threeInit() {
   controls = new THREE.OrbitControls( camera, renderer.domElement );
   controls.rotateSpeed = .1;
   controls.zoomSpeed = .4;
-  controls.keyPanSpeed = .1;
+  controls.keyPanSpeed = 5;
   controls.enableDamping = true;
   controls.dampingFactor = 0.3;
 }

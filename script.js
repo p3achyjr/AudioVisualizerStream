@@ -56,9 +56,13 @@ function loadFromSC(track_url) {
 function handleAudio() {
   var source;
   audioElement.addEventListener("canplay", function() {
-    source = audioCtx.createMediaElementSource(audioElement);
-    source.connect(analyser);
-    analyser.connect(audioCtx.destination);
+    $("#seek").attr("max", audioElement.duration);
+    if (nodeBound === false) {
+      source = audioCtx.createMediaElementSource(audioElement);
+      source.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      nodeBound = true;
+    }
   });
 
   renderBars();
@@ -106,6 +110,21 @@ function handleSubmitUrl() {
   loadFromSC(track_url);
 }
 
+function displayVolume() {
+  $("#seekers").stop(true, false).fadeTo(600, 1);
+}
+
+function hideVolume() {
+  $("#seekers").stop(true, false).fadeTo(600, 0);
+}
+
+function displayTime() {
+  $("#range-seeker").stop(true, false).fadeTo(600, 1);
+}
+
+function hideTime() {
+  $("#range-seeker").stop(true, false).fadeTo(600, 0);
+}
 
 $(document).ready( function() {
   // canvas = document.getElementById('canvas');
@@ -114,21 +133,54 @@ $(document).ready( function() {
   // resizeCanvas();
   audioElement = document.getElementById("player");
   audioElement.crossOrigin = "anonymous";
-  audioElement.volume = .75;
+  audioElement.addEventListener('timeupdate', function() {
+    if (updateTime) {
+      var currtime = parseInt(audioElement.currentTime, 10);
+      document.getElementById("seek").value = currtime;
+      console.log($("#seek").val());
+    }
+  });
   $("#sc-song-info").hide();
+
   window.setTimeout( function() {
-    $("#sc-url").fadeOut("slow");
-    $("#sc-song-info").fadeIn("slow");
-  }, 2500);
+    $("#sc-url").fadeOut(600);
+    $("#sc-song-info").fadeIn(600);
+  }, 6500);
+
+  window.setTimeout( function() {
+    $("#range-seeker").fadeTo(600, 0, function() {
+      $("#range-seeker").hover(displayTime, hideTime);
+    });
+    $("#seekers").fadeTo(600, 0, function() {
+      $("#seekers").hover(displayVolume, hideVolume);
+    });
+  }, 4000);
+
   $("#sc-url").hover(displayUrlBox, hideUrlBox);
   $("#sc-song-info").hover(displayUrlBox, hideUrlBox);
+
+  $("#seek").change("change", function() {
+    audioElement.currentTime = $(this).val();
+    $("#seek").attr("max", audioElement.duration);
+    updateTime = true;
+  });
+  $("#seek").on("input change", function() {
+    updateTime = false;
+  });
+  $("#vol-control").change("change", function() {
+    audioElement.volume = $(this).val() / 100;
+  });
+
   document.getElementById("sc-url").addEventListener("keypress", function(e) {
     if(e.which === 13) {
       handleSubmitUrl();
       e.preventDefault();
     }
   });
+
   $("#play").click(playBtnHandleClick);
+
+
   threeInit();
   initRoom();
   handleAudio();
